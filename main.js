@@ -25,6 +25,16 @@ function changeName(newName) {
     localStorage.setItem('username', newName);
 }
 
+function redirect(redirectLink) {
+    // Check if the link starts with "http://" or "https://"
+    if (!redirectLink.startsWith("http://") && !redirectLink.startsWith("https://")) {
+        // If not, prepend "https://"
+        redirectLink = "https://" + redirectLink;
+    }
+    // Set the window location
+    window.location.href = redirectLink;
+}
+
 function handleInput(event) {
     if (event.key === "Enter") {
         const commandInput = document.getElementById("commandInput");
@@ -56,7 +66,7 @@ function executeCommand(command) {
         window.location.reload(true);
     }
     else if (command.toLowerCase().startsWith("changename")) {
-        const newName = command.substring("changename ".length).trim();
+        const newName = command.substring("changename".length).trim();
 
         if (newName === "") {
             return "'Name' not defined.";
@@ -65,7 +75,21 @@ function executeCommand(command) {
         changeName(newName);
         return `Name changed to ${name}`;
     }
-
+    else if (command.toLowerCase() === ("github")) {
+        window.location.href = "https://www.github.com/GustyCube/terminal-simulator";
+        return "Redirecting to official GitHub"
+    }
+    else if (command.toLowerCase().startsWith("redirect")) {
+        const redirectLink = command.substring("redirect".length).trim();
+        if (redirectLink === "") {
+            return "'Link' is not defined.";
+        }
+    
+        console.log("Redirecting to:", redirectLink);
+        redirect(redirectLink);
+    }
+    
+    
     else {
         return `Command not found: ${command}`;
     }
