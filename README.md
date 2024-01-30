@@ -10,7 +10,7 @@ Just a fun terminal simulator coded in HTML5, JS, and CSS. It combines different
 
 <br>
 
-`clearcache`: This command will clear any local storage. See the [local cache documnetation](./cache.md).
+`clearcache`: This command will clear any local storage. See the [local cache documnetation](https://github.com/GustyCube/Terminal-Simulator/wiki/cache).
 <br>
 
 `github`: Redirects to the official github.
